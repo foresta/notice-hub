@@ -20,15 +20,15 @@ type WebhookConfig struct {
 	Channel string
 }
 
-func LoadSlackConfig() SlackConfig {
-	config := load()
+func LoadSlackConfig(filepath string) SlackConfig {
+	config := load(filepath)
 	return config.Slack
 }
 
-func load() Config {
+func load(filepath string) Config {
 	var config Config
 
-	_, err := toml.DecodeFile("./config/config.toml", &config)
+	_, err := toml.DecodeFile(filepath, &config)
 	if err != nil {
 		fmt.Println("config load error: ", err)
 	}

@@ -16,9 +16,9 @@ type Message struct {
 	Channel string `json:"channel"`
 }
 
-func Notify(text string) {
+func Notify(text string, config_path string) {
 
-	webhook_config := config.LoadSlackConfig().Webhook
+	webhook_config := config.LoadSlackConfig(config_path).Webhook
 
 	message := Message{
 		Name:    webhook_config.Name,
