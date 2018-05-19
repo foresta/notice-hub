@@ -11,7 +11,7 @@ import (
 )
 
 type Message struct {
-	Name    string `json:"name"`
+	Name    string `json:"username"`
 	Text    string `json:"text"`
 	Channel string `json:"channel"`
 }
