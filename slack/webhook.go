@@ -1,4 +1,4 @@
-package webhook
+package slack
 
 import (
 	"bytes"
@@ -16,9 +16,13 @@ type Message struct {
 	Channel string `json:"channel"`
 }
 
-func Notify(text string, config_path string) {
+type Webhook struct {
+	ConfigFilePath string
+}
 
-	webhook_config := config.LoadSlackConfig(config_path).Webhook
+func (w *Webhook) Notify(text string) {
+
+	webhook_config := config.LoadSlackConfig(w.ConfigFilePath).Webhook
 
 	message := Message{
 		Name:    webhook_config.Name,

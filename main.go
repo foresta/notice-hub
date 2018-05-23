@@ -48,7 +48,10 @@ func main() {
 			os.Exit(1)
 		}
 
-		webhook.Notify(msg, config)
+		webhook := &slack.Webhook{
+			ConfigFilePath: config,
+		}
+		webhook.Notify(msg)
 
 		return nil
 	}
