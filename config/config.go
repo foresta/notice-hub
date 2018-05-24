@@ -12,11 +12,18 @@ type Config struct {
 
 type SlackConfig struct {
 	Webhook WebhookConfig
+	WebAPI  WebAPIConfig
 }
 
 type WebhookConfig struct {
-	Name    string
 	Url     string
+	Name    string
+	Channel string
+}
+
+type WebAPIConfig struct {
+	Token   string
+	Name    string
 	Channel string
 }
 

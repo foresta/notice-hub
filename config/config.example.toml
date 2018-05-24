@@ -1,6 +1,0 @@
-[slack]
-[slack.webhook]
-name = "webhook bot name"
-url = "slack webhook URL
-channel = "webhook channel"
-

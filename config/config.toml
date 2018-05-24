@@ -1,0 +1,12 @@
+[slack]
+[slack.webhook]
+url = "webhook url"
+name = "bot name"
+channel = "channel name"
+
+[slack.webapi]
+token = "slack web api token"
+name = "bot name"
+channel = "channel name"
+
+

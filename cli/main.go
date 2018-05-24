@@ -35,6 +35,20 @@ func help() {
 	}
 }
 
+func callWebhook(msg string, config string) {
+	webhook := &slack.Webhook{
+		ConfigFilePath: config,
+	}
+	webhook.Notify(msg)
+}
+
+func callWebAPI(msg string, config string) {
+	webapi := &slack.WebAPI{
+		ConfigFilePath: config,
+	}
+	webapi.Notify(msg)
+}
+
 func main() {
 
 	app := App()
@@ -48,10 +62,7 @@ func main() {
 			os.Exit(1)
 		}
 
-		webhook := &slack.Webhook{
-			ConfigFilePath: config,
-		}
-		webhook.Notify(msg)
+		callWebAPI(msg, config)
 
 		return nil
 	}
