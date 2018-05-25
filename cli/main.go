@@ -4,7 +4,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/foresta/notice-hub/slack"
+	"github.com/foresta/notice-hub/notice_hub"
 	"github.com/urfave/cli"
 )
 
@@ -35,20 +35,6 @@ func help() {
 	}
 }
 
-func callWebhook(msg string, config string) {
-	webhook := &slack.Webhook{
-		ConfigFilePath: config,
-	}
-	webhook.Notify(msg)
-}
-
-func callWebAPI(msg string, config string) {
-	webapi := &slack.WebAPI{
-		ConfigFilePath: config,
-	}
-	webapi.Notify(msg)
-}
-
 func main() {
 
 	app := App()
@@ -62,7 +48,7 @@ func main() {
 			os.Exit(1)
 		}
 
-		callWebAPI(msg, config)
+		notice_hub.Slack(notice_hub.WebAPI, config).Notify(msg)
 
 		return nil
 	}
